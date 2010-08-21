@@ -1,10 +1,8 @@
 %include	/usr/lib/rpm/macros.php
-%define		_class		RDF
-%define		_subclass	%{nil}
 %define		_status		alpha
 %define		_pearname	RDF
 %define		subver	alpha1
-%define		rel		1
+%define		rel		2
 Summary:	%{_pearname} - Port of the core RAP API
 Name:		php-pear-%{_pearname}
 Version:	0.1.0
@@ -16,8 +14,10 @@ Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
 URL:		http://pear.php.net/package/RDF/
 BuildRequires:	php-pear-PEAR
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
+Requires:	php-common >= 4:4.2.0
 Requires:	php-pear
-Requires:	php-pear-PEAR-core >= 1:1.0
+Requires:	php-pear-PEAR-core >= 1:1.0-0.b1
+Suggests:	php-pear-MDB
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -25,8 +25,8 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %define		_noautoreq	'pear(MDB.*)'
 
 %description
-This package is a port of the core components of the RDF API for PHP (aka RAP):
-<http://www.wiwiss.fu-berlin.de/suhl/bizer/rdfapi/>.
+This package is a port of the core components of the RDF API for PHP
+(aka RAP): <http://www.wiwiss.fu-berlin.de/suhl/bizer/rdfapi/>.
 
 In PEAR status of this package is: %{_status}.
 
