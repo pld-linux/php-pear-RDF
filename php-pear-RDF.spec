@@ -1,20 +1,18 @@
 %include	/usr/lib/rpm/macros.php
 %define		_status		alpha
 %define		_pearname	RDF
-%define		subver	alpha1
-%define		rel		2
 Summary:	%{_pearname} - Port of the core RAP API
 Name:		php-pear-%{_pearname}
-Version:	0.1.0
-Release:	0.%{subver}.%{rel}
+Version:	0.2.0
+Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
-Source0:	http://pear.php.net/get/%{_pearname}-%{version}%{subver}.tgz
-# Source0-md5:	ab1c1df4069f3e9c6e25995ecceac355
+Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
+# Source0-md5:	0ceb2b28bc35fdf101973778c7be59fc
 URL:		http://pear.php.net/package/RDF/
-BuildRequires:	php-pear-PEAR
+BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-BuildRequires:	rpmbuild(macros) >= 1.300
+BuildRequires:	rpmbuild(macros) >= 1.571
 Requires:	php-common >= 4:4.2.0
 Requires:	php-pear
 Requires:	php-pear-PEAR-core >= 1:1.0-0.b1
@@ -23,7 +21,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-%define		_noautoreq	'pear(MDB.*)'
+%define		_noautoreq	pear(MDB.*)
 
 %description
 This package is a port of the core components of the RDF API for PHP
@@ -46,10 +44,8 @@ cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post
-if [ -f %{_docdir}/%{name}-%{version}/optional-packages.txt ]; then
-	cat %{_docdir}/%{name}-%{version}/optional-packages.txt
-fi
+%post -p <lua>
+%pear_package_print_optionalpackages
 
 %files
 %defattr(644,root,root,755)
