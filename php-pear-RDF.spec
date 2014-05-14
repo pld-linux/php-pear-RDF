@@ -12,7 +12,7 @@ Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
 URL:		http://pear.php.net/package/RDF/
 BuildRequires:	php-pear-PEAR >= 1:1.4.0-0.b1
 BuildRequires:	rpm-php-pearprov >= 4.4.2-11
-BuildRequires:	rpmbuild(macros) >= 1.571
+BuildRequires:	rpmbuild(macros) >= 1.654
 Requires:	php(core) >= 4.2.0
 Requires:	php-pear
 Requires:	php-pear-PEAR-core >= 1:1.0-0.b1
@@ -21,7 +21,7 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 # exclude optional dependencies
-%define		_noautoreq	pear(MDB.*)
+%define		_noautoreq_pear MDB.*
 
 %description
 This package is a port of the core components of the RDF API for PHP
