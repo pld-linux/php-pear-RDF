@@ -1,6 +1,5 @@
 %define		_status		alpha
 %define		_pearname	RDF
-%include	/usr/lib/rpm/macros.php
 Summary:	%{_pearname} - Port of the core RAP API
 Name:		php-pear-%{_pearname}
 Version:	0.2.0
