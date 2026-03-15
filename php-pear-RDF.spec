@@ -3,7 +3,7 @@
 Summary:	%{_pearname} - Port of the core RAP API
 Name:		php-pear-%{_pearname}
 Version:	0.2.0
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://pear.php.net/get/%{_pearname}-%{version}.tgz
